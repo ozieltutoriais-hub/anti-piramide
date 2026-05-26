@@ -36,8 +36,10 @@ export default function Login() {
         )
 
       const usuario = {
-        email: userCredential.user.email
-      }
+  nome: 'Administrador',
+  email: userCredential.user.email,
+  tipo: 'admin'
+}
 
       localStorage.setItem(
         'usuarioLogado',
