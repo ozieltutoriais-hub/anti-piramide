@@ -2,7 +2,8 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  useLocation
 } from 'react-router-dom'
 
 import Sidebar from './components/Sidebar'
@@ -26,67 +27,79 @@ function RotaPrivada({ children }) {
   return children
 }
 
-export default function App() {
+function Layout() {
 
-  const usuario = JSON.parse(
-    localStorage.getItem('usuarioLogado')
+  const location = useLocation()
+
+  const telaLogin =
+    location.pathname === '/login'
+
+  return (
+
+    <div className="min-h-screen bg-[#060b17] text-white flex">
+
+      {!telaLogin && <Sidebar />}
+
+      <main className="flex-1 p-6">
+
+        <Routes>
+
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+
+          <Route
+            path="/cadastro"
+            element={
+              <RotaPrivada>
+                <Cadastro />
+              </RotaPrivada>
+            }
+          />
+
+          <Route
+            path="/"
+            element={
+              <RotaPrivada>
+                <Dashboard />
+              </RotaPrivada>
+            }
+          />
+
+          <Route
+            path="/investimentos"
+            element={
+              <RotaPrivada>
+                <Investimentos />
+              </RotaPrivada>
+            }
+          />
+
+          <Route
+            path="/relatorios"
+            element={
+              <RotaPrivada>
+                <Relatorios />
+              </RotaPrivada>
+            }
+          />
+
+        </Routes>
+
+      </main>
+
+    </div>
+
   )
+}
+
+export default function App() {
 
   return (
 
     <BrowserRouter>
-
-      <div className="min-h-screen bg-[#060b17] text-white flex">
-
-        <Sidebar />
-
-        <main className="flex-1 p-6">
-
-          <Routes>
-
-            <Route
-              path="/login"
-              element={<Login />}
-            />
-
-            <Route
-              path="/cadastro"
-              element={<Cadastro />}
-            />
-
-            <Route
-              path="/"
-              element={
-                <RotaPrivada>
-                  <Dashboard />
-                </RotaPrivada>
-              }
-            />
-
-            <Route
-              path="/investimentos"
-              element={
-                <RotaPrivada>
-                  <Investimentos />
-                </RotaPrivada>
-              }
-            />
-
-            <Route
-              path="/relatorios"
-              element={
-                <RotaPrivada>
-                  <Relatorios />
-                </RotaPrivada>
-              }
-            />
-
-          </Routes>
-
-        </main>
-
-      </div>
-
+      <Layout />
     </BrowserRouter>
 
   )
