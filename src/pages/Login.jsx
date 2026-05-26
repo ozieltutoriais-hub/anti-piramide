@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 
 import app from '../firebase/firebase'
-
+console.log(app)
 import {
   getAuth,
   signInWithEmailAndPassword
