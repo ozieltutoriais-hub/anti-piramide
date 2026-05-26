@@ -45,8 +45,7 @@ export default function Login() {
       )
 
       alert('Login realizado com sucesso!')
-
-      navigate('/')
+window.location.href = '/'
 
     } catch (error) {
 
