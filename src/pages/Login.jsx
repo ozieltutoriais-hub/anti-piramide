@@ -45,7 +45,7 @@ export default function Login() {
       )
 
       alert('Login realizado com sucesso!')
-window.location.href = '/cadastro'
+navigate('/')
 
     } catch (error) {
 
