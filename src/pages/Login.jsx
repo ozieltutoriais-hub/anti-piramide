@@ -49,7 +49,7 @@ window.location.href = '/cadastro'
 
     } catch (error) {
 
-      alert('Email ou senha inválidos')
+  alert(error.message)
 
       console.log(error)
 
