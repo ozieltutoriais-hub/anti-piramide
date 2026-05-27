@@ -1,104 +1,109 @@
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+
 import {
-  Bell,
-  Camera,
-  Calendar,
-  ChevronDown,
-  CreditCard,
-  FileText,
   Home,
-  Mail,
-  MapPin,
-  Menu,
-  Phone,
-  Save,
-  Search,
+  Users,
+  GraduationCap,
+  Calendar,
+  DollarSign,
+  FileText,
+  Settings,
+  LogOut,
+  ShieldCheck,
   User,
-  Users
+  BarChart3,
+  Wallet,
+  CreditCard,
+  ClipboardList
 } from 'lucide-react'
 
-export default function CadastroProfissional() {
+export default function Sidebar() {
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const usuario = JSON.parse(
+    localStorage.getItem('usuarioLogado')
+  )
+
+  function sair() {
+
+    localStorage.removeItem(
+      'usuarioLogado'
+    )
+
+    navigate('/login')
+
+  }
+
+  function ativo(path) {
+
+    return location.pathname === path
+
+  }
 
   return (
 
-    <div className="flex bg-[#edf1f7] min-h-screen">
+    <aside className="w-80 bg-gradient-to-b from-[#020817] via-[#081120] to-[#020817] text-white min-h-screen border-r border-green-500/20 shadow-[0_0_40px_rgba(0,0,0,0.6)] flex flex-col justify-between overflow-hidden">
 
-      {/* CONTEÚDO */}
-      <div className="flex-1">
+      {/* TOPO */}
+      <div>
 
-        {/* TOPBAR */}
-        <div className="bg-[#071120] border-b-4 border-green-500 px-10 py-5 flex items-center justify-between shadow-xl">
+        {/* LOGO */}
+        <div className="relative overflow-hidden border-b border-green-500/20">
 
-          <div className="flex items-center gap-6">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.25),transparent_60%)]" />
 
-            <button className="w-14 h-14 rounded-2xl bg-[#0d1b30] border border-white/10 flex items-center justify-center text-white hover:bg-[#132542] transition">
+          <div className="p-8 relative z-10">
 
-              <Menu />
+            <h1 className="text-5xl font-black tracking-tight leading-none">
 
-            </button>
+              <span className="text-white">
+                AUTOESCOLA
+              </span>
 
-            <div>
+            </h1>
 
-              <h1 className="text-4xl font-black text-white">
-                Cadastro de Condutores
-              </h1>
+            <h2 className="text-4xl font-black text-green-400 leading-none mt-1">
+              ONLINE
+            </h2>
 
-            </div>
+            <p className="text-zinc-400 mt-4 text-sm">
+              Sistema Administrativo
+            </p>
 
           </div>
 
-          <div className="flex items-center gap-5">
+        </div>
 
-            {/* BUSCA */}
-            <div className="bg-[#0d1b30] border border-white/10 rounded-2xl px-5 h-14 flex items-center gap-4 w-[420px]">
+        {/* PERFIL */}
+        <div className="p-6">
 
-              <Search className="text-zinc-400" />
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 shadow-xl">
 
-              <input
-                placeholder="Buscar..."
-                className="bg-transparent outline-none text-white w-full"
-              />
+            <div className="flex items-center gap-4">
 
-            </div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg">
 
-            {/* NOTIFICAÇÃO */}
-            <div className="relative">
-
-              <button className="w-14 h-14 rounded-2xl bg-[#0d1b30] border border-white/10 flex items-center justify-center text-white">
-
-                <Bell />
-
-              </button>
-
-              <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs w-7 h-7 rounded-full flex items-center justify-center font-black">
-
-                3
-
-              </div>
-
-            </div>
-
-            {/* PERFIL */}
-            <div className="flex items-center gap-4 bg-[#0d1b30] border border-white/10 rounded-2xl px-5 py-2">
-
-              <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-
-                <User className="text-zinc-700" />
+                {
+                  usuario?.tipo === 'admin'
+                    ? <ShieldCheck className="text-white" size={30} />
+                    : <User className="text-white" size={30} />
+                }
 
               </div>
 
               <div>
 
-                <h2 className="font-black text-white">
-                  Administrador
+                <h2 className="font-black text-xl text-white">
+                  {usuario?.nome}
                 </h2>
 
-                <p className="text-zinc-400 text-sm">
-                  Admin
+                <p className="text-zinc-400 capitalize">
+                  {usuario?.tipo}
                 </p>
 
               </div>
-
-              <ChevronDown className="text-white" />
 
             </div>
 
@@ -106,256 +111,172 @@ export default function CadastroProfissional() {
 
         </div>
 
-        {/* PAGE */}
-        <div className="p-8">
+        {/* MENUS */}
+        <div className="px-6 pb-6 overflow-auto">
 
-          {/* CARD */}
-          <div className="bg-white rounded-[30px] shadow-[0_0_40px_rgba(0,0,0,0.08)] overflow-hidden border border-zinc-200">
+          {/* PRINCIPAL */}
+          <div className="mb-8">
 
-            {/* HEADER */}
-            <div className="px-8 pt-8 pb-5 flex items-center justify-between">
+            <h3 className="text-green-400 font-black text-sm tracking-widest mb-4 uppercase">
+              Principal
+            </h3>
 
-              <div>
+            <div className="space-y-3">
 
-                <div className="flex items-center gap-3 text-zinc-500 mb-4">
+              <Link
+                to="/"
+                className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 font-bold group ${
+                  ativo('/')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_25px_rgba(34,197,94,0.5)]'
+                    : 'bg-white/5 hover:bg-white/10 text-zinc-300'
+                }`}
+              >
 
-                  <Home size={18} />
+                <Home size={22} />
 
-                  <span>Home</span>
+                Dashboard
 
-                  <span>›</span>
+              </Link>
 
-                  <span className="text-green-600 font-bold">
-                    Condutores
-                  </span>
+              <Link
+                to="/cadastro-profissional"
+                className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 font-bold ${
+                  ativo('/cadastro-profissional')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_25px_rgba(34,197,94,0.5)]'
+                    : 'bg-white/5 hover:bg-white/10 text-zinc-300'
+                }`}
+              >
 
-                  <span>›</span>
+                <Users size={22} />
 
-                  <span>Cadastro</span>
+                Condutores
 
-                </div>
+              </Link>
 
-                <h1 className="text-5xl font-black text-[#081120]">
-                  Cadastro de Condutor
-                </h1>
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                <p className="text-zinc-500 text-lg mt-2">
-                  Preencha todos os dados do condutor
-                </p>
+                <GraduationCap size={22} />
 
-              </div>
+                Instrutores
 
-              <button className="bg-green-500 hover:bg-green-400 transition-all text-white font-black px-8 py-5 rounded-2xl shadow-[0_0_25px_rgba(34,197,94,0.4)] flex items-center gap-4">
+              </button>
 
-                <Save />
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                Salvar Condutor
+                <Calendar size={22} />
+
+                Aulas
 
               </button>
 
             </div>
 
-            {/* TABS */}
-            <div className="px-8">
+          </div>
 
-              <div className="flex gap-1 border-b border-zinc-200 overflow-auto">
+          {/* FINANCEIRO */}
+          <div className="mb-8">
 
-                <button className="bg-gradient-to-b from-green-500 to-green-600 text-white px-10 py-5 rounded-t-2xl font-black flex items-center gap-3 shadow-lg whitespace-nowrap">
+            <h3 className="text-green-400 font-black text-sm tracking-widest mb-4 uppercase">
+              Financeiro
+            </h3>
 
-                  <Users />
+            <div className="space-y-3">
 
-                  Dados Pessoais
+              <Link
+                to="/investimentos"
+                className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 font-bold ${
+                  ativo('/investimentos')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_25px_rgba(34,197,94,0.5)]'
+                    : 'bg-white/5 hover:bg-white/10 text-zinc-300'
+                }`}
+              >
 
-                </button>
+                <DollarSign size={22} />
 
-                <button className="px-10 py-5 font-black text-[#081120] flex items-center gap-3 whitespace-nowrap">
+                Financeiro
 
-                  <MapPin />
+              </Link>
 
-                  Endereço
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                </button>
+                <Wallet size={22} />
 
-                <button className="px-10 py-5 font-black text-[#081120] flex items-center gap-3 whitespace-nowrap">
+                Caixas
 
-                  <CreditCard />
+              </button>
 
-                  Documentos
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                </button>
+                <CreditCard size={22} />
 
-                <button className="px-10 py-5 font-black text-[#081120] flex items-center gap-3 whitespace-nowrap">
+                Planos
 
-                  <FileText />
-
-                  Financeiro
-
-                </button>
-
-                <button className="px-10 py-5 font-black text-[#081120] flex items-center gap-3 whitespace-nowrap">
-
-                  <Mail />
-
-                  Observações
-
-                </button>
-
-              </div>
+              </button>
 
             </div>
 
-            {/* FORM */}
-            <div className="p-8">
+          </div>
 
-              {/* FOTO + CAMPOS */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* RELATÓRIOS */}
+          <div className="mb-8">
 
-                {/* FOTO */}
-                <div className="lg:col-span-3">
+            <h3 className="text-green-400 font-black text-sm tracking-widest mb-4 uppercase">
+              Relatórios
+            </h3>
 
-                  <div className="border-2 border-dashed border-green-400 rounded-[30px] p-8 h-full relative flex flex-col items-center justify-center bg-zinc-50">
+            <div className="space-y-3">
 
-                    <button className="absolute top-5 right-5 w-16 h-16 rounded-full bg-green-500 shadow-[0_0_25px_rgba(34,197,94,0.5)] flex items-center justify-center text-white">
+              <Link
+                to="/relatorios"
+                className={`flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 font-bold ${
+                  ativo('/relatorios')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_25px_rgba(34,197,94,0.5)]'
+                    : 'bg-white/5 hover:bg-white/10 text-zinc-300'
+                }`}
+              >
 
-                      <Camera />
+                <FileText size={22} />
 
-                    </button>
+                Relatórios
 
-                    <div className="w-36 h-36 rounded-full bg-zinc-200 flex items-center justify-center">
+              </Link>
 
-                      <User size={70} className="text-zinc-400" />
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                    </div>
+                <BarChart3 size={22} />
 
-                    <h2 className="text-3xl font-black mt-8 text-[#081120]">
-                      Adicionar Foto
-                    </h2>
+                Desempenho
 
-                    <p className="text-zinc-500 mt-2">
-                      JPG, PNG (máx. 3MB)
-                    </p>
+              </button>
 
-                  </div>
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                </div>
+                <ClipboardList size={22} />
 
-                {/* CAMPOS */}
-                <div className="lg:col-span-9">
+                Exportações
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              </button>
 
-                    <div>
+            </div>
 
-                      <label className="font-black text-[#081120] mb-2 block">
-                        Nome completo *
-                      </label>
+          </div>
 
-                      <div className="relative">
+          {/* CONFIG */}
+          <div>
 
-                        <User className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-400" />
+            <h3 className="text-green-400 font-black text-sm tracking-widest mb-4 uppercase">
+              Configurações
+            </h3>
 
-                        <input
-                          placeholder="Digite o nome completo"
-                          className="w-full h-16 rounded-2xl border border-[#cdd5e1] pl-14 pr-5 outline-none focus:border-green-500"
-                        />
+            <div className="space-y-3">
 
-                      </div>
+              <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 text-zinc-300 transition-all duration-300 font-bold">
 
-                    </div>
+                <Settings size={22} />
 
-                    <div>
+                Configurações
 
-                      <label className="font-black text-[#081120] mb-2 block">
-                        CPF *
-                      </label>
-
-                      <div className="relative">
-
-                        <CreditCard className="absolute left-5 top-1/2 -translate-y-1/2 text-zinc-400" />
-
-                        <input
-                          placeholder="000.000.000-00"
-                          className="w-full h-16 rounded-2xl border border-[#cdd5e1] pl-14 pr-5 outline-none focus:border-green-500"
-                        />
-
-                      </div>
-
-                    </div>
-
-                    <div>
-
-                      <label className="font-black text-[#081120] mb-2 block">
-                        RG
-                      </label>
-
-                      <input
-                        placeholder="00.000.000-0"
-                        className="w-full h-16 rounded-2xl border border-[#cdd5e1] px-5 outline-none focus:border-green-500"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label className="font-black text-[#081120] mb-2 block">
-                        RENACH
-                      </label>
-
-                      <input
-                        placeholder="Digite o RENACH"
-                        className="w-full h-16 rounded-2xl border border-[#cdd5e1] px-5 outline-none focus:border-green-500"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label className="font-black text-[#081120] mb-2 block">
-                        Sexo *
-                      </label>
-
-                      <select className="w-full h-16 rounded-2xl border border-[#cdd5e1] px-5 outline-none focus:border-green-500">
-
-                        <option>
-                          Selecione o sexo
-                        </option>
-
-                        <option>
-                          Masculino
-                        </option>
-
-                        <option>
-                          Feminino
-                        </option>
-
-                      </select>
-
-                    </div>
-
-                    <div>
-
-                      <label className="font-black text-[#081120] mb-2 block">
-                        Data de nascimento *
-                      </label>
-
-                      <div className="relative">
-
-                        <input
-                          type="date"
-                          className="w-full h-16 rounded-2xl border border-[#cdd5e1] px-5 outline-none focus:border-green-500"
-                        />
-
-                        <Calendar className="absolute right-5 top-1/2 -translate-y-1/2 text-zinc-400" />
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
+              </button>
 
             </div>
 
@@ -365,7 +286,23 @@ export default function CadastroProfissional() {
 
       </div>
 
-    </div>
+      {/* RODAPÉ */}
+      <div className="p-6 border-t border-green-500/20">
+
+        <button
+          onClick={sair}
+          className="w-full flex items-center justify-center gap-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-400 hover:to-red-500 transition-all duration-300 p-5 rounded-2xl font-black shadow-lg hover:scale-[1.02]"
+        >
+
+          <LogOut size={22} />
+
+          Sair do Sistema
+
+        </button>
+
+      </div>
+
+    </aside>
 
   )
 
