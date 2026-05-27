@@ -37,7 +37,7 @@ function Layout() {
 
   return (
 
-    <div className="min-h-screen bg-[#060b17] text-white flex">
+    <div className="min-h-screen bg-[#f1f1f1] text-zinc-700 flex">
 
       {!telaLogin && <Sidebar />}
 
