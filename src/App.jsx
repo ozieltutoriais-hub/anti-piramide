@@ -106,7 +106,9 @@ function Layout() {
 
 </main>
 
-    
+    </main>
+
+</div>
 
   )
 }
