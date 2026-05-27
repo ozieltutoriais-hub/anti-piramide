@@ -46,66 +46,67 @@ function Layout() {
 
   {!telaLogin && <Topbar />}
 
-  <div className="p-5 overflow-auto">
+  <div className="p-5 overflow-auto flex-1">
 
-        <Routes>
+    <Routes>
 
-          <Route
-            path="/login"
-            element={<Login />}
-          />
+      <Route
+        path="/login"
+        element={<Login />}
+      />
 
-          <Route
-            path="/cadastro"
-            element={
-              <RotaPrivada>
-                <Cadastro />
-              </RotaPrivada>
-            }
-          />
+      <Route
+        path="/cadastro"
+        element={
+          <RotaPrivada>
+            <Cadastro />
+          </RotaPrivada>
+        }
+      />
 
-          <Route
-            path="/"
-            element={
-              <RotaPrivada>
-                <Dashboard />
-              </RotaPrivada>
-            }
-          />
+      <Route
+        path="/"
+        element={
+          <RotaPrivada>
+            <Dashboard />
+          </RotaPrivada>
+        }
+      />
 
-          <Route
-            path="/investimentos"
-            element={
-              <RotaPrivada>
-                <Investimentos />
-              </RotaPrivada>
-            }
-          />
+      <Route
+        path="/investimentos"
+        element={
+          <RotaPrivada>
+            <Investimentos />
+          </RotaPrivada>
+        }
+      />
 
-          <Route
-            path="/relatorios"
-            element={
-              <RotaPrivada>
-                <Relatorios />
-              </RotaPrivada>
-            }
-          />
+      <Route
+        path="/relatorios"
+        element={
+          <RotaPrivada>
+            <Relatorios />
+          </RotaPrivada>
+        }
+      />
 
+      <Route
+        path="/cadastro-profissional"
+        element={
+          <RotaPrivada>
+            <CadastroProfissional />
+          </RotaPrivada>
+        }
+      />
 
-<Route
-  path="/cadastro-profissional"
-  element={
-    <RotaPrivada>
-      <CadastroProfissional />
-    </RotaPrivada>
-  }
-/>
+    </Routes>
 
-        </Routes>
+  </div>
 
-      </main>
-</div>
-    </div>
+</main>
+
+    
 
   )
 }
