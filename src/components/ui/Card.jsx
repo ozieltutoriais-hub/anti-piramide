@@ -1,0 +1,25 @@
+export default function Card({
+  children,
+  className = ''
+}) {
+
+  return (
+
+    <div
+      className={`
+        bg-white
+        rounded-3xl
+        border
+        border-zinc-200
+        shadow-sm
+        ${className}
+      `}
+    >
+
+      {children}
+
+    </div>
+
+  )
+
+}

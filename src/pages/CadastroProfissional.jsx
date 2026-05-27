@@ -1,7 +1,7 @@
 import Input from '../components/ui/Input'
 import Button from '../components/ui/Button'
 import PageHeader from '../components/ui/PageHeader'
-
+import Card from '../components/ui/Card'
 import { useState } from 'react'
 
 import {
@@ -31,7 +31,8 @@ export default function CadastroProfissional() {
     <div className="p-6 bg-[#f4f7fb] min-h-screen">
 
       {/* CARD PRINCIPAL */}
-      <div className="bg-white rounded-3xl border border-zinc-200 shadow-sm overflow-hidden">
+      {/* CARD PRINCIPAL */}
+<Card className="overflow-hidden">
 
         {/* HEADER */}
   <div className="p-8 pb-0">
@@ -54,6 +55,8 @@ export default function CadastroProfissional() {
 
     }
   />
+</div>
+</Card>
 
 </div>
 
