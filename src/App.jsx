@@ -86,6 +86,16 @@ function Layout() {
             }
           />
 
+
+<Route
+  path="/cadastro-profissional"
+  element={
+    <RotaPrivada>
+      <CadastroProfissional />
+    </RotaPrivada>
+  }
+/>
+
         </Routes>
 
       </main>
