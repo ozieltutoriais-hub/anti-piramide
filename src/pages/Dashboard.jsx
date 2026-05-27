@@ -10,11 +10,17 @@ import {
 import { useState } from 'react'
 
 import {
+  GraduationCap,
+  Car,
+  Calendar,
+  TrendingUp,
+  Users,
   Bell,
-  Search
+  ArrowUpRight
 } from 'lucide-react'
 
-import StatsCard from '../components/StatsCard'
+import Card from '../components/ui/Card'
+import Button from '../components/ui/Button'
 
 const data = [
   { name: 'Seg', matriculas: 4 },
@@ -29,7 +35,7 @@ const data = [
 export default function Dashboard() {
 
   const usuario = JSON.parse(
-    localStorage.getItem('venaUser')
+    localStorage.getItem('usuarioLogado')
   )
 
   const [alunosOnline] = useState(248)
@@ -37,132 +43,255 @@ export default function Dashboard() {
 
   return (
 
-    <div>
+    <div className="p-8 bg-[#eef2f7] min-h-screen">
 
-      <div className="mb-10">
+      {/* HEADER */}
+      <div className="flex items-center justify-between mb-10">
 
-        <div className="flex items-center justify-between mb-8">
+        <div>
 
-          <div>
+          <h1 className="text-4xl font-bold text-[#081120] tracking-tight">
 
-            <h1 className="text-5xl font-black mb-3 text-yellow-400">
-              Auto Escola Online
-            </h1>
+            Dashboard
 
-            <p className="text-zinc-400 text-lg">
-              Plataforma educacional e gerenciamento de alunos
-            </p>
+          </h1>
 
-          </div>
+          <p className="text-zinc-500 mt-2 text-lg">
 
-          <div className="flex items-center gap-4">
+            Bem-vindo novamente,
+            {' '}
+            <span className="font-semibold text-[#081120]">
 
-            <div className="bg-[#11192c] p-4 rounded-2xl cursor-pointer hover:bg-[#18233b] transition">
-              <Search size={22} />
-            </div>
+              {usuario?.nome || 'Administrador'}
 
-            <div className="bg-[#11192c] p-4 rounded-2xl cursor-pointer hover:bg-[#18233b] transition relative">
+            </span>
 
-              <Bell size={22} />
+          </p>
 
-              <div className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full"></div>
+        </div>
 
-            </div>
+        <div className="flex items-center gap-4">
 
-            <div className="flex items-center gap-3 bg-[#11192c] px-5 py-3 rounded-2xl">
+          <div className="w-12 h-12 rounded-2xl bg-white border border-[#e4e9f2] flex items-center justify-center shadow-sm relative">
 
-              <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-black font-black text-xl">
-                J
-              </div>
+            <Bell
+              size={18}
+              strokeWidth={2.2}
+              className="text-zinc-700"
+            />
 
-              <div>
-
-                <p className="font-bold">
-                  {usuario?.nome || 'Administrador'}
-                </p>
-
-                <p className="text-zinc-400 text-sm">
-                  Administrador
-                </p>
-
-              </div>
-
-            </div>
+            <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-green-500"></div>
 
           </div>
+
+          <Button>
+
+            Nova Matrícula
+
+          </Button>
 
         </div>
 
       </div>
 
-      <div className="mt-4 bg-[#11192c] border border-zinc-800 rounded-3xl p-6 mb-10">
-
-        <p className="text-zinc-400 mb-2">
-          Usuário Logado
-        </p>
-
-        <h2 className="text-3xl font-black text-yellow-400">
-          {usuario?.nome}
-        </h2>
-
-        <p className="text-zinc-500 mt-2">
-          {usuario?.email}
-        </p>
-
-      </div>
-
+      {/* CARDS */}
       <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-6">
 
-        <StatsCard
-          title="Alunos Ativos"
-          value={alunosOnline}
-          color="bg-gradient-to-br from-blue-500 to-cyan-700"
-        />
+        <Card className="p-6">
 
-        <StatsCard
-          title="Aulas Hoje"
-          value="18"
-          color="bg-gradient-to-br from-green-500 to-green-700"
-        />
+          <div className="flex items-start justify-between">
 
-        <StatsCard
-          title="Exames Marcados"
-          value="12"
-          color="bg-gradient-to-br from-yellow-400 to-orange-500"
-        />
+            <div>
 
-        <StatsCard
-          title="Veículos"
-          value={veiculos}
-          color="bg-gradient-to-br from-cyan-500 to-blue-700"
-        />
+              <p className="text-zinc-500 font-medium">
 
-        <StatsCard
-          title="Instrutores"
-          value="6"
-          color="bg-gradient-to-br from-purple-500 to-pink-600"
-        />
+                Alunos Ativos
+
+              </p>
+
+              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+
+                {alunosOnline}
+
+              </h2>
+
+              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+
+                <ArrowUpRight size={16} />
+
+                +12% este mês
+
+              </div>
+
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center">
+
+              <Users
+                className="text-green-600"
+                size={24}
+                strokeWidth={2.2}
+              />
+
+            </div>
+
+          </div>
+
+        </Card>
+
+        <Card className="p-6">
+
+          <div className="flex items-start justify-between">
+
+            <div>
+
+              <p className="text-zinc-500 font-medium">
+
+                Aulas Hoje
+
+              </p>
+
+              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+
+                18
+
+              </h2>
+
+              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+
+                <ArrowUpRight size={16} />
+
+                Agenda positiva
+
+              </div>
+
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center">
+
+              <Calendar
+                className="text-blue-600"
+                size={24}
+                strokeWidth={2.2}
+              />
+
+            </div>
+
+          </div>
+
+        </Card>
+
+        <Card className="p-6">
+
+          <div className="flex items-start justify-between">
+
+            <div>
+
+              <p className="text-zinc-500 font-medium">
+
+                Veículos
+
+              </p>
+
+              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+
+                {veiculos}
+
+              </h2>
+
+              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+
+                <ArrowUpRight size={16} />
+
+                Frota disponível
+
+              </div>
+
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-yellow-100 flex items-center justify-center">
+
+              <Car
+                className="text-yellow-600"
+                size={24}
+                strokeWidth={2.2}
+              />
+
+            </div>
+
+          </div>
+
+        </Card>
+
+        <Card className="p-6">
+
+          <div className="flex items-start justify-between">
+
+            <div>
+
+              <p className="text-zinc-500 font-medium">
+
+                Aprovação
+
+              </p>
+
+              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+
+                92%
+
+              </h2>
+
+              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+
+                <TrendingUp size={16} />
+
+                Excelente índice
+
+              </div>
+
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center">
+
+              <GraduationCap
+                className="text-purple-600"
+                size={24}
+                strokeWidth={2.2}
+              />
+
+            </div>
+
+          </div>
+
+        </Card>
 
       </div>
 
-      <div className="bg-[#11192c] rounded-3xl p-8 border border-zinc-800 mt-10">
+      {/* GRÁFICO */}
+      <Card className="mt-8 p-8">
 
         <div className="flex items-center justify-between mb-8">
 
           <div>
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-2xl font-bold text-[#081120]">
+
               Matrículas da Semana
+
             </h2>
 
             <p className="text-zinc-500 mt-2">
+
               Evolução semanal das matrículas
+
             </p>
 
           </div>
 
-          <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-2xl font-bold">
-            + 28%
+          <div className="bg-green-100 text-green-700 px-4 h-11 rounded-xl flex items-center font-semibold">
+
+            +28%
+
           </div>
 
         </div>
@@ -173,16 +302,21 @@ export default function Dashboard() {
 
             <LineChart data={data}>
 
-              <XAxis dataKey="name" />
+              <XAxis
+                dataKey="name"
+                stroke="#94a3b8"
+              />
 
-              <YAxis />
+              <YAxis
+                stroke="#94a3b8"
+              />
 
               <Tooltip />
 
               <Line
                 type="monotone"
                 dataKey="matriculas"
-                stroke="#eab308"
+                stroke="#16a34a"
                 strokeWidth={4}
               />
 
@@ -192,75 +326,63 @@ export default function Dashboard() {
 
         </div>
 
-      </div>
+      </Card>
 
-      <div className="mt-10 bg-[#11192c] rounded-3xl p-8 border border-zinc-800">
+      {/* BOTTOM */}
+      <div className="grid lg:grid-cols-3 gap-6 mt-8">
 
-        <div className="flex items-center justify-between flex-wrap gap-6">
+        <Card className="p-6">
 
-          <div>
+          <p className="text-zinc-500 font-medium mb-3">
 
-            <h2 className="text-4xl font-black mb-2 text-yellow-400">
-              Central Administrativa
-            </h2>
+            Instrutores
 
-            <p className="text-zinc-400">
-              Controle educacional e operacional da auto escola
-            </p>
+          </p>
 
-          </div>
+          <h2 className="text-4xl font-bold text-[#081120]">
 
-          <button
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-2xl font-bold text-lg transition"
-          >
-            Nova Matrícula
-          </button>
+            6
 
-        </div>
+          </h2>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        </Card>
 
-          <div className="bg-[#18233b] rounded-2xl p-6">
+        <Card className="p-6">
 
-            <p className="text-zinc-400 mb-2">
-              Aprovação
-            </p>
+          <p className="text-zinc-500 font-medium mb-3">
 
-            <h3 className="text-3xl font-black text-green-400">
-              92%
-            </h3>
+            Exames Marcados
 
-          </div>
+          </p>
 
-          <div className="bg-[#18233b] rounded-2xl p-6">
+          <h2 className="text-4xl font-bold text-[#081120]">
 
-            <p className="text-zinc-400 mb-2">
-              CNHs Emitidas
-            </p>
+            12
 
-            <h3 className="text-3xl font-black text-blue-400">
-              1.284
-            </h3>
+          </h2>
 
-          </div>
+        </Card>
 
-          <div className="bg-[#18233b] rounded-2xl p-6">
+        <Card className="p-6">
 
-            <p className="text-zinc-400 mb-2">
-              Veículos Disponíveis
-            </p>
+          <p className="text-zinc-500 font-medium mb-3">
 
-            <h3 className="text-3xl font-black text-yellow-400">
-              {veiculos}
-            </h3>
+            CNHs Emitidas
 
-          </div>
+          </p>
 
-        </div>
+          <h2 className="text-4xl font-bold text-[#081120]">
+
+            1.284
+
+          </h2>
+
+        </Card>
 
       </div>
 
     </div>
 
   )
+
 }
