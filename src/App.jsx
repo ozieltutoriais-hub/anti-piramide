@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard'
 import Investimentos from './pages/Investimentos'
 import Relatorios from './pages/Relatorios'
 import Cadastro from './pages/Cadastro'
+import CadastroProfissional from './pages/CadastroProfissional'
 import Login from './pages/Login'
 
 function RotaPrivada({ children }) {
