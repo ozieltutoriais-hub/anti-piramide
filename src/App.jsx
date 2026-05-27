@@ -100,18 +100,17 @@ function Layout() {
         }
       />
 
-    </Routes>
+        </Routes>
 
   </div>
 
 </main>
 
-    </main>
-
 </div>
 
   )
-}G
+
+}
 
 export default function App() {
 
@@ -122,4 +121,5 @@ export default function App() {
     </BrowserRouter>
 
   )
+
 }
