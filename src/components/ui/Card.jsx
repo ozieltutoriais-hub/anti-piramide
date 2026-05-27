@@ -8,10 +8,12 @@ export default function Card({
     <div
       className={`
         bg-white
-        rounded-3xl
+        rounded-[28px]
         border
-        border-zinc-200
-        shadow-sm
+        border-[#e4e9f2]
+        shadow-[0_10px_40px_rgba(15,23,42,0.06)]
+        transition-all
+        duration-300
         ${className}
       `}
     >
