@@ -16,7 +16,9 @@ import {
   TrendingUp,
   Users,
   Bell,
-  ArrowUpRight
+  ArrowUpRight,
+  Wallet,
+  ClipboardCheck
 } from 'lucide-react'
 
 import Card from '../components/ui/Card'
@@ -43,20 +45,20 @@ export default function Dashboard() {
 
   return (
 
-    <div className="p-8 bg-[#eef2f7] min-h-screen">
+    <div className="p-8 min-h-screen bg-[linear-gradient(to_bottom_right,#eef2f7,#f8fafc)]">
 
       {/* HEADER */}
       <div className="flex items-center justify-between mb-10">
 
         <div>
 
-          <h1 className="text-4xl font-bold text-[#081120] tracking-tight">
+          <h1 className="text-5xl font-bold tracking-tight text-[#081120]">
 
             Dashboard
 
           </h1>
 
-          <p className="text-zinc-500 mt-2 text-lg">
+          <p className="text-zinc-500 mt-3 text-lg">
 
             Bem-vindo novamente,
             {' '}
@@ -72,7 +74,7 @@ export default function Dashboard() {
 
         <div className="flex items-center gap-4">
 
-          <div className="w-12 h-12 rounded-2xl bg-white border border-[#e4e9f2] flex items-center justify-center shadow-sm relative">
+          <div className="w-12 h-12 rounded-2xl bg-white border border-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] flex items-center justify-center relative">
 
             <Bell
               size={18}
@@ -95,9 +97,9 @@ export default function Dashboard() {
       </div>
 
       {/* CARDS */}
-      <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-6">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-2 gap-6">
 
-        <Card className="p-6">
+        <Card className="p-7">
 
           <div className="flex items-start justify-between">
 
@@ -109,13 +111,13 @@ export default function Dashboard() {
 
               </p>
 
-              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+              <h2 className="text-5xl font-bold tracking-tight text-[#081120] mt-5">
 
                 {alunosOnline}
 
               </h2>
 
-              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+              <div className="mt-5 flex items-center gap-2 text-green-600 font-semibold text-sm">
 
                 <ArrowUpRight size={16} />
 
@@ -125,11 +127,11 @@ export default function Dashboard() {
 
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-3xl bg-green-100 flex items-center justify-center">
 
               <Users
                 className="text-green-600"
-                size={24}
+                size={28}
                 strokeWidth={2.2}
               />
 
@@ -139,7 +141,7 @@ export default function Dashboard() {
 
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-7">
 
           <div className="flex items-start justify-between">
 
@@ -151,13 +153,13 @@ export default function Dashboard() {
 
               </p>
 
-              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+              <h2 className="text-5xl font-bold tracking-tight text-[#081120] mt-5">
 
                 18
 
               </h2>
 
-              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+              <div className="mt-5 flex items-center gap-2 text-green-600 font-semibold text-sm">
 
                 <ArrowUpRight size={16} />
 
@@ -167,11 +169,11 @@ export default function Dashboard() {
 
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-3xl bg-blue-100 flex items-center justify-center">
 
               <Calendar
                 className="text-blue-600"
-                size={24}
+                size={28}
                 strokeWidth={2.2}
               />
 
@@ -181,7 +183,7 @@ export default function Dashboard() {
 
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-7">
 
           <div className="flex items-start justify-between">
 
@@ -193,13 +195,13 @@ export default function Dashboard() {
 
               </p>
 
-              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+              <h2 className="text-5xl font-bold tracking-tight text-[#081120] mt-5">
 
                 {veiculos}
 
               </h2>
 
-              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+              <div className="mt-5 flex items-center gap-2 text-green-600 font-semibold text-sm">
 
                 <ArrowUpRight size={16} />
 
@@ -209,11 +211,11 @@ export default function Dashboard() {
 
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-yellow-100 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-3xl bg-yellow-100 flex items-center justify-center">
 
               <Car
                 className="text-yellow-600"
-                size={24}
+                size={28}
                 strokeWidth={2.2}
               />
 
@@ -223,7 +225,7 @@ export default function Dashboard() {
 
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-7">
 
           <div className="flex items-start justify-between">
 
@@ -235,13 +237,13 @@ export default function Dashboard() {
 
               </p>
 
-              <h2 className="text-4xl font-bold text-[#081120] mt-4">
+              <h2 className="text-5xl font-bold tracking-tight text-[#081120] mt-5">
 
                 92%
 
               </h2>
 
-              <div className="mt-4 flex items-center gap-2 text-green-600 font-semibold text-sm">
+              <div className="mt-5 flex items-center gap-2 text-green-600 font-semibold text-sm">
 
                 <TrendingUp size={16} />
 
@@ -251,11 +253,11 @@ export default function Dashboard() {
 
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-3xl bg-purple-100 flex items-center justify-center">
 
               <GraduationCap
                 className="text-purple-600"
-                size={24}
+                size={28}
                 strokeWidth={2.2}
               />
 
@@ -267,71 +269,164 @@ export default function Dashboard() {
 
       </div>
 
-      {/* GRÁFICO */}
-      <Card className="mt-8 p-8">
+      {/* ÁREA CENTRAL */}
+      <div className="grid xl:grid-cols-3 gap-6 mt-8">
 
-        <div className="flex items-center justify-between mb-8">
+        {/* GRÁFICO */}
+        <Card className="xl:col-span-2 p-8">
 
-          <div>
+          <div className="flex items-center justify-between mb-8">
 
-            <h2 className="text-2xl font-bold text-[#081120]">
+            <div>
 
-              Matrículas da Semana
+              <h2 className="text-3xl font-bold tracking-tight text-[#081120]">
 
-            </h2>
+                Matrículas da Semana
 
-            <p className="text-zinc-500 mt-2">
+              </h2>
 
-              Evolução semanal das matrículas
+              <p className="text-zinc-500 mt-2">
+
+                Evolução semanal das matrículas
+
+              </p>
+
+            </div>
+
+            <div className="bg-green-100 text-green-700 px-5 h-12 rounded-2xl flex items-center font-semibold">
+
+              +28%
+
+            </div>
+
+          </div>
+
+          <div className="h-[380px]">
+
+            <ResponsiveContainer width="100%" height="100%">
+
+              <LineChart data={data}>
+
+                <XAxis
+                  dataKey="name"
+                  stroke="#94a3b8"
+                />
+
+                <YAxis
+                  stroke="#94a3b8"
+                />
+
+                <Tooltip />
+
+                <Line
+                  type="monotone"
+                  dataKey="matriculas"
+                  stroke="#16a34a"
+                  strokeWidth={5}
+                  dot={{
+                    r: 5
+                  }}
+                />
+
+              </LineChart>
+
+            </ResponsiveContainer>
+
+          </div>
+
+        </Card>
+
+        {/* LATERAL */}
+        <div className="space-y-6">
+
+          <Card className="p-7">
+
+            <div className="flex items-center justify-between mb-6">
+
+              <div>
+
+                <p className="text-zinc-500 font-medium">
+
+                  Receita Mensal
+
+                </p>
+
+                <h2 className="text-4xl font-bold tracking-tight text-[#081120] mt-3">
+
+                  R$ 48k
+
+                </h2>
+
+              </div>
+
+              <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center">
+
+                <Wallet
+                  className="text-emerald-600"
+                  size={24}
+                  strokeWidth={2.2}
+                />
+
+              </div>
+
+            </div>
+
+            <div className="h-3 rounded-full bg-zinc-100 overflow-hidden">
+
+              <div className="h-full w-[72%] bg-gradient-to-r from-green-500 to-green-600 rounded-full"></div>
+
+            </div>
+
+          </Card>
+
+          <Card className="p-7">
+
+            <div className="flex items-center justify-between mb-6">
+
+              <div>
+
+                <p className="text-zinc-500 font-medium">
+
+                  Exames Marcados
+
+                </p>
+
+                <h2 className="text-4xl font-bold tracking-tight text-[#081120] mt-3">
+
+                  12
+
+                </h2>
+
+              </div>
+
+              <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center">
+
+                <ClipboardCheck
+                  className="text-blue-600"
+                  size={24}
+                  strokeWidth={2.2}
+                />
+
+              </div>
+
+            </div>
+
+            <p className="text-zinc-500">
+
+              Próximos exames agendados para esta semana.
 
             </p>
 
-          </div>
-
-          <div className="bg-green-100 text-green-700 px-4 h-11 rounded-xl flex items-center font-semibold">
-
-            +28%
-
-          </div>
+          </Card>
 
         </div>
 
-        <div className="h-[350px]">
-
-          <ResponsiveContainer width="100%" height="100%">
-
-            <LineChart data={data}>
-
-              <XAxis
-                dataKey="name"
-                stroke="#94a3b8"
-              />
-
-              <YAxis
-                stroke="#94a3b8"
-              />
-
-              <Tooltip />
-
-              <Line
-                type="monotone"
-                dataKey="matriculas"
-                stroke="#16a34a"
-                strokeWidth={4}
-              />
-
-            </LineChart>
-
-          </ResponsiveContainer>
-
-        </div>
-
-      </Card>
+      </div>
 
       {/* BOTTOM */}
       <div className="grid lg:grid-cols-3 gap-6 mt-8">
 
-        <Card className="p-6">
+        <Card className="p-7">
 
           <p className="text-zinc-500 font-medium mb-3">
 
@@ -339,7 +434,7 @@ export default function Dashboard() {
 
           </p>
 
-          <h2 className="text-4xl font-bold text-[#081120]">
+          <h2 className="text-5xl font-bold tracking-tight text-[#081120]">
 
             6
 
@@ -347,23 +442,7 @@ export default function Dashboard() {
 
         </Card>
 
-        <Card className="p-6">
-
-          <p className="text-zinc-500 font-medium mb-3">
-
-            Exames Marcados
-
-          </p>
-
-          <h2 className="text-4xl font-bold text-[#081120]">
-
-            12
-
-          </h2>
-
-        </Card>
-
-        <Card className="p-6">
+        <Card className="p-7">
 
           <p className="text-zinc-500 font-medium mb-3">
 
@@ -371,7 +450,7 @@ export default function Dashboard() {
 
           </p>
 
-          <h2 className="text-4xl font-bold text-[#081120]">
+          <h2 className="text-5xl font-bold tracking-tight text-[#081120]">
 
             1.284
 
@@ -379,7 +458,25 @@ export default function Dashboard() {
 
         </Card>
 
+        <Card className="p-7">
+
+          <p className="text-zinc-500 font-medium mb-3">
+
+            Taxa de Aprovação
+
+          </p>
+
+          <h2 className="text-5xl font-bold tracking-tight text-[#081120]">
+
+            92%
+
+          </h2>
+
+        </Card>
+
       </div>
+
+      <div className="h-10"></div>
 
     </div>
 

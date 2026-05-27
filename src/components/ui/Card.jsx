@@ -7,13 +7,15 @@ export default function Card({
 
     <div
       className={`
-        bg-white
-        rounded-[28px]
+        bg-white/95
+        backdrop-blur-xl
+        rounded-[32px]
         border
-        border-[#e4e9f2]
-        shadow-[0_10px_40px_rgba(15,23,42,0.06)]
+        border-white
+        shadow-[0_20px_60px_rgba(15,23,42,0.08)]
         transition-all
         duration-300
+        hover:shadow-[0_20px_70px_rgba(15,23,42,0.12)]
         ${className}
       `}
     >
