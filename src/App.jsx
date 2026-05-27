@@ -42,7 +42,11 @@ function Layout() {
 
       {!telaLogin && <Sidebar />}
 
-      <main className="flex-1 p-6">
+      <main className="flex-1 flex flex-col">
+
+  {!telaLogin && <Topbar />}
+
+  <div className="p-5 overflow-auto">
 
         <Routes>
 
@@ -100,7 +104,7 @@ function Layout() {
         </Routes>
 
       </main>
-
+</div>
     </div>
 
   )
