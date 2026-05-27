@@ -1,3 +1,7 @@
+import Input from '../components/ui/Input'
+import Button from '../components/ui/Button'
+import PageHeader from '../components/ui/PageHeader'
+
 import { useState } from 'react'
 
 import {
@@ -30,71 +34,68 @@ export default function CadastroProfissional() {
       <div className="bg-white rounded-3xl border border-zinc-200 shadow-sm overflow-hidden">
 
         {/* HEADER */}
-        <div className="bg-gradient-to-r from-[#081120] to-[#0f172a] px-8 py-7 flex items-center justify-between">
+  <div className="p-8 pb-0">
 
-          <div>
+  <PageHeader
+    title="Cadastro de Aluno"
+    subtitle="Preencha os dados do aluno"
+    action={
 
-            <h1 className="text-4xl font-bold text-white tracking-tight">
-              Cadastro de Aluno
-            </h1>
+      <Button>
 
-            <p className="text-zinc-400 mt-2">
-              Preencha os dados do aluno
-            </p>
+        <Save
+          size={18}
+          strokeWidth={2.2}
+        />
 
-          </div>
+        Salvar Cadastro
 
-          <button className="h-12 px-6 rounded-xl bg-gradient-to-b from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 transition-all duration-300 text-white font-semibold shadow-lg flex items-center gap-3">
+      </Button>
 
-            <Save
-              size={18}
-              strokeWidth={2.2}
-            />
+    }
+  />
 
-            Salvar Cadastro
+</div>
 
-          </button>
-
-        </div>
-
+        
         {/* TABS */}
-        <div className="px-8 pt-6">
+<div className="px-8 pt-6">
 
-          <div className="flex gap-3 overflow-auto border-b border-zinc-200 pb-5">
+  <div className="flex gap-3 overflow-auto border-b border-zinc-200 pb-5">
 
-            <button className="bg-gradient-to-b from-green-500 to-green-600 text-white px-6 h-11 rounded-xl font-semibold shadow-lg whitespace-nowrap">
+    <button className="bg-gradient-to-b from-green-500 to-green-600 text-white px-6 h-11 rounded-xl font-semibold shadow-lg whitespace-nowrap">
 
-              Dados Pessoais
+      Dados Pessoais
 
-            </button>
+    </button>
 
-            <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
+    <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
 
-              Endereço
+      Endereço
 
-            </button>
+    </button>
 
-            <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
+    <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
 
-              Documentos
+      Documentos
 
-            </button>
+    </button>
 
-            <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
+    <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
 
-              Financeiro
+      Financeiro
 
-            </button>
+    </button>
 
-            <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
+    <button className="bg-zinc-100 hover:bg-zinc-200 transition px-6 h-11 rounded-xl font-medium text-zinc-700 whitespace-nowrap">
 
-              Observações
+      Observações
 
-            </button>
+    </button>
 
-          </div>
+  </div>
 
-        </div>
+</div>
 
         {/* FORM */}
         <div className="p-8">
@@ -136,28 +137,28 @@ export default function CadastroProfissional() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-                <input
+                <Input
                   name="nome"
                   placeholder="Nome completo"
                   onChange={handleChange}
                   className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
                 />
 
-                <input
+                <Input
                   name="cpf"
                   placeholder="CPF"
                   onChange={handleChange}
                   className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
                 />
 
-                <input
+                <Input
                   name="rg"
                   placeholder="RG"
                   onChange={handleChange}
                   className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
                 />
 
-                <input
+               <Input
                   name="renach"
                   placeholder="RENACH"
                   onChange={handleChange}
@@ -172,7 +173,7 @@ export default function CadastroProfissional() {
 
                 </select>
 
-                <input
+                <Input
                   type="date"
                   className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
                 />
@@ -199,27 +200,27 @@ export default function CadastroProfissional() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
 
-              <input
+              <Input
                 placeholder="CEP"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
 
-              <input
+              <Input
                 placeholder="Logradouro"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500 md:col-span-2"
               />
 
-              <input
+              <Input
                 placeholder="Número"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
 
-              <input
+              <Input
                 placeholder="Bairro"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
 
-              <input
+              <Input
                 placeholder="Cidade"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
@@ -253,17 +254,17 @@ export default function CadastroProfissional() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-              <input
+              <Input
                 placeholder="Telefone"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
 
-              <input
+              <Input
                 placeholder="Celular"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
 
-              <input
+              <Input
                 placeholder="Email"
                 className="w-full h-12 px-4 rounded-xl border border-[#d8dee9] bg-white outline-none transition-all focus:ring-4 focus:ring-green-500/20 focus:border-green-500"
               />
