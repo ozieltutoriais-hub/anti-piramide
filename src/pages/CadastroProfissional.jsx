@@ -1,148 +1,212 @@
 import { useState } from 'react'
 import {
-  User,
-  Phone,
-  Mail,
-  MapPin,
+  Camera,
+  Home,
+  Users,
   FileText,
-  Camera
+  DollarSign,
+  Settings,
+  LogOut
 } from 'lucide-react'
 
 export default function CadastroProfissional() {
 
-  const [form, setForm] = useState({
-    nome: '',
-    cpf: '',
-    rg: '',
-    telefone: '',
-    celular: '',
-    email: '',
-    cidade: '',
-    bairro: '',
-    cep: '',
-    endereco: '',
-    numero: '',
-    observacoes: '',
-    renach: ''
-  })
+  const [form, setForm] = useState({})
 
   function handleChange(e) {
+
     setForm({
       ...form,
       [e.target.name]: e.target.value
     })
-  }
 
-  function salvarAluno() {
-    alert('Cadastro salvo com sucesso!')
   }
 
   return (
 
-    <div className="min-h-screen bg-[#f1f1f1]">
+    <div className="flex min-h-screen bg-[#f4f4f4]">
 
-      {/* TOPO */}
-      <div className="bg-green-500 h-14 flex items-center justify-between px-6 shadow-md">
+      {/* SIDEBAR */}
+      <aside className="w-72 bg-[#081120] text-white flex flex-col justify-between">
 
-        <h1 className="text-white font-black text-2xl">
-          e-condutor
-        </h1>
+        <div>
 
-        <button
-          onClick={salvarAluno}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold"
-        >
-          Salvar
-        </button>
+          <div className="p-8 border-b border-zinc-800">
 
-      </div>
+            <h1 className="text-4xl font-black text-yellow-400">
+              AUTOESCOLA
+            </h1>
+
+            <p className="text-yellow-500 font-bold">
+              ONLINE
+            </p>
+
+            <p className="text-zinc-500 mt-2">
+              Sistema Administrativo
+            </p>
+
+          </div>
+
+          <div className="p-5 space-y-3">
+
+            <button className="w-full bg-yellow-500 text-black p-4 rounded-2xl font-bold flex items-center gap-3">
+              <Home />
+              Dashboard
+            </button>
+
+            <button className="w-full bg-[#131c31] hover:bg-[#1d2947] transition p-4 rounded-2xl flex items-center gap-3">
+              <Users />
+              Alunos
+            </button>
+
+            <button className="w-full bg-[#131c31] hover:bg-[#1d2947] transition p-4 rounded-2xl flex items-center gap-3">
+              <DollarSign />
+              Financeiro
+            </button>
+
+            <button className="w-full bg-[#131c31] hover:bg-[#1d2947] transition p-4 rounded-2xl flex items-center gap-3">
+              <FileText />
+              Relatórios
+            </button>
+
+            <button className="w-full bg-[#131c31] hover:bg-[#1d2947] transition p-4 rounded-2xl flex items-center gap-3">
+              <Settings />
+              Configurações
+            </button>
+
+          </div>
+
+        </div>
+
+        <div className="p-5">
+
+          <button className="w-full bg-red-600 hover:bg-red-700 transition p-4 rounded-2xl font-bold flex items-center justify-center gap-3">
+            <LogOut />
+            Sair do Sistema
+          </button>
+
+        </div>
+
+      </aside>
 
       {/* CONTEÚDO */}
-      <div className="p-6">
+      <main className="flex-1 p-8">
 
-        <div className="bg-white rounded-xl shadow border p-6">
+        {/* TOPO */}
+        <div className="bg-gradient-to-r from-[#081120] to-yellow-600 rounded-3xl p-6 flex items-center justify-between mb-8 shadow-xl">
 
-          <h1 className="text-5xl text-zinc-700 mb-10">
-            Aluno
-          </h1>
+          <div>
 
-          {/* DADOS PESSOAIS */}
-          <div className="border rounded-xl p-6 mb-8">
+            <h1 className="text-4xl font-black text-white">
+              Cadastro de Aluno
+            </h1>
 
-            <h2 className="text-2xl font-bold text-zinc-700 mb-6">
-              Dados pessoais
-            </h2>
+            <p className="text-zinc-200 mt-2">
+              Preencha os dados do aluno
+            </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          </div>
 
-              {/* FOTO */}
-              <div className="lg:col-span-1">
+          <button className="bg-yellow-400 hover:bg-yellow-500 transition text-black font-black px-8 py-4 rounded-2xl">
+            Salvar Cadastro
+          </button>
 
-                <div className="border rounded-xl h-72 flex flex-col items-center justify-center bg-zinc-100">
+        </div>
 
-                  <Camera
-                    size={80}
-                    className="text-zinc-400"
-                  />
+        {/* CARD */}
+        <div className="bg-white rounded-3xl shadow-xl p-8">
 
-                  <p className="mt-4 text-zinc-500">
-                    Sem foto
-                  </p>
+          {/* ABAS */}
+          <div className="flex gap-8 border-b pb-5 mb-8 overflow-auto">
 
-                </div>
+            <button className="text-yellow-500 font-black border-b-4 border-yellow-500 pb-3">
+              Dados Pessoais
+            </button>
+
+            <button className="text-zinc-500 font-bold">
+              Endereço
+            </button>
+
+            <button className="text-zinc-500 font-bold">
+              Documentos
+            </button>
+
+            <button className="text-zinc-500 font-bold">
+              Financeiro
+            </button>
+
+            <button className="text-zinc-500 font-bold">
+              Observações
+            </button>
+
+          </div>
+
+          {/* FOTO + FORM */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+            {/* FOTO */}
+            <div>
+
+              <div className="border-2 border-dashed border-yellow-400 rounded-3xl h-80 flex flex-col items-center justify-center bg-zinc-50">
+
+                <Camera
+                  size={80}
+                  className="text-yellow-500"
+                />
+
+                <p className="mt-4 text-zinc-500 font-bold">
+                  Adicionar Foto
+                </p>
 
               </div>
 
-              {/* CAMPOS */}
-              <div className="lg:col-span-4">
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* CAMPOS */}
+            <div className="lg:col-span-3">
 
-                  <input
-                    name="nome"
-                    value={form.nome}
-                    onChange={handleChange}
-                    placeholder="Nome completo"
-                    className="border p-4 rounded-lg"
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                  <input
-                    name="cpf"
-                    value={form.cpf}
-                    onChange={handleChange}
-                    placeholder="CPF"
-                    className="border p-4 rounded-lg"
-                  />
+                <input
+                  name="nome"
+                  placeholder="Nome completo"
+                  onChange={handleChange}
+                  className="border p-4 rounded-2xl"
+                />
 
-                  <input
-                    name="rg"
-                    value={form.rg}
-                    onChange={handleChange}
-                    placeholder="RG"
-                    className="border p-4 rounded-lg"
-                  />
+                <input
+                  name="cpf"
+                  placeholder="CPF"
+                  onChange={handleChange}
+                  className="border p-4 rounded-2xl"
+                />
 
-                  <input
-                    name="renach"
-                    value={form.renach}
-                    onChange={handleChange}
-                    placeholder="RENACH"
-                    className="border p-4 rounded-lg"
-                  />
+                <input
+                  name="rg"
+                  placeholder="RG"
+                  onChange={handleChange}
+                  className="border p-4 rounded-2xl"
+                />
 
-                  <select
-                    className="border p-4 rounded-lg"
-                  >
-                    <option>Masculino</option>
-                    <option>Feminino</option>
-                  </select>
+                <input
+                  name="renach"
+                  placeholder="RENACH"
+                  onChange={handleChange}
+                  className="border p-4 rounded-2xl"
+                />
 
-                  <input
-                    placeholder="Data nascimento"
-                    className="border p-4 rounded-lg"
-                  />
+                <select
+                  className="border p-4 rounded-2xl"
+                >
+                  <option>Sexo</option>
+                  <option>Masculino</option>
+                  <option>Feminino</option>
+                </select>
 
-                </div>
+                <input
+                  type="date"
+                  className="border p-4 rounded-2xl"
+                />
 
               </div>
 
@@ -151,61 +215,45 @@ export default function CadastroProfissional() {
           </div>
 
           {/* ENDEREÇO */}
-          <div className="border rounded-xl p-6 mb-8">
+          <div className="mt-10">
 
-            <h2 className="text-2xl font-bold text-zinc-700 mb-6">
+            <h2 className="text-2xl font-black mb-5 text-zinc-700">
               Endereço
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
 
               <input
-                name="cep"
-                value={form.cep}
-                onChange={handleChange}
                 placeholder="CEP"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
               <input
-                name="endereco"
-                value={form.endereco}
-                onChange={handleChange}
                 placeholder="Logradouro"
-                className="border p-4 rounded-lg md:col-span-2"
+                className="border p-4 rounded-2xl md:col-span-2"
               />
 
               <input
-                name="numero"
-                value={form.numero}
-                onChange={handleChange}
                 placeholder="Número"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
               <input
-                name="bairro"
-                value={form.bairro}
-                onChange={handleChange}
                 placeholder="Bairro"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
               <input
-                name="cidade"
-                value={form.cidade}
-                onChange={handleChange}
                 placeholder="Cidade"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
               <select
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               >
                 <option>UF</option>
                 <option>SP</option>
                 <option>RJ</option>
-                <option>MG</option>
               </select>
 
             </div>
@@ -213,62 +261,50 @@ export default function CadastroProfissional() {
           </div>
 
           {/* CONTATO */}
-          <div className="border rounded-xl p-6 mb-8">
+          <div className="mt-10">
 
-            <h2 className="text-2xl font-bold text-zinc-700 mb-6">
+            <h2 className="text-2xl font-black mb-5 text-zinc-700">
               Contato e acesso
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
               <input
-                name="telefone"
-                value={form.telefone}
-                onChange={handleChange}
                 placeholder="Telefone"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
               <input
-                name="celular"
-                value={form.celular}
-                onChange={handleChange}
                 placeholder="Celular"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
               <input
-                name="email"
-                value={form.email}
-                onChange={handleChange}
                 placeholder="Email"
-                className="border p-4 rounded-lg"
+                className="border p-4 rounded-2xl"
               />
 
             </div>
 
           </div>
 
-          {/* OBSERVAÇÕES */}
-          <div className="border rounded-xl p-6">
+          {/* OBS */}
+          <div className="mt-10">
 
-            <h2 className="text-2xl font-bold text-zinc-700 mb-6">
-              Observações gerais
+            <h2 className="text-2xl font-black mb-5 text-zinc-700">
+              Observações
             </h2>
 
             <textarea
-              name="observacoes"
-              value={form.observacoes}
-              onChange={handleChange}
               placeholder="Observações do aluno..."
-              className="w-full border p-5 rounded-lg h-40"
+              className="w-full border p-5 rounded-2xl h-40"
             />
 
           </div>
 
         </div>
 
-      </div>
+      </main>
 
     </div>
 
