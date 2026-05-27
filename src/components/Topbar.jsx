@@ -9,12 +9,12 @@ export default function Topbar() {
 
   return (
 
-    <div className="h-24 bg-[#071120] border-b border-green-500/20 flex items-center justify-between px-8 shadow-xl">
+    <div className="h-20 bg-[#071120]/95 backdrop-blur-md border-b border-green-500/10 flex items-center justify-between px-8 shadow-[0_2px_15px_rgba(0,0,0,0.08)]">
 
       {/* ESQUERDA */}
       <div>
 
-        <h1 className="text-3xl font-black text-white">
+        <h1 className="text-2xl font-bold text-white tracking-tight">
           Autoescola Online
         </h1>
 
@@ -25,16 +25,20 @@ export default function Topbar() {
       </div>
 
       {/* DIREITA */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4">
 
         {/* BUSCA */}
-        <div className="w-[380px] h-14 rounded-xl bg-[#0b1730] border border-white/10 flex items-center px-5 gap-4">
+        <div className="w-[320px] h-12 rounded-xl bg-[#0b1730] border border-white/5 flex items-center px-4 gap-3 transition-all focus-within:border-green-500/40 focus-within:shadow-[0_0_15px_rgba(0,255,80,0.15)]">
 
-          <Search className="text-zinc-400" />
+          <Search
+            className="text-zinc-400"
+            size={18}
+            strokeWidth={2.2}
+          />
 
           <input
             placeholder="Buscar..."
-            className="bg-transparent outline-none text-white w-full"
+            className="bg-transparent outline-none text-white w-full text-sm placeholder:text-zinc-500"
           />
 
         </div>
@@ -42,13 +46,16 @@ export default function Topbar() {
         {/* NOTIFICAÇÃO */}
         <div className="relative">
 
-          <button className="w-14 h-14 rounded-xl bg-[#0b1730] border border-white/10 flex items-center justify-center text-white">
+          <button className="w-12 h-12 rounded-xl bg-[#0b1730] border border-white/5 flex items-center justify-center text-white hover:bg-[#12203d] transition-all">
 
-            <Bell />
+            <Bell
+              size={18}
+              strokeWidth={2.2}
+            />
 
           </button>
 
-          <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-black">
+          <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-gradient-to-b from-green-500 to-green-600 text-white text-[10px] flex items-center justify-center font-bold shadow-lg">
 
             3
 
@@ -57,27 +64,35 @@ export default function Topbar() {
         </div>
 
         {/* PERFIL */}
-        <div className="h-14 px-4 rounded-xl bg-[#0b1730] border border-white/10 flex items-center gap-4">
+        <div className="h-12 px-4 rounded-xl bg-[#0b1730] border border-white/5 flex items-center gap-3 hover:bg-[#12203d] transition-all cursor-pointer">
 
-          <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-green-500 to-green-600 flex items-center justify-center shadow-lg">
 
-            <User className="text-white" size={18} />
+            <User
+              className="text-white"
+              size={16}
+              strokeWidth={2.2}
+            />
 
           </div>
 
           <div>
 
-            <h2 className="text-white font-black leading-none">
+            <h2 className="text-white font-semibold text-sm leading-none">
               Admin
             </h2>
 
-            <p className="text-zinc-400 text-xs mt-1">
+            <p className="text-zinc-400 text-[11px] mt-1">
               Administrador
             </p>
 
           </div>
 
-          <ChevronDown className="text-white" size={18} />
+          <ChevronDown
+            className="text-white"
+            size={16}
+            strokeWidth={2.2}
+          />
 
         </div>
 
