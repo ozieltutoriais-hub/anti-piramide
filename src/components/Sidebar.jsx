@@ -18,10 +18,11 @@ import {
   Wallet,
   Kanban,
   Server,
-  Banknote
+  Banknote,
+  X
 } from 'lucide-react'
 
-export default function Sidebar() {
+export default function Sidebar({ menuAberto, setMenuAberto }) {
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -47,16 +48,31 @@ export default function Sidebar() {
   }
 
   return (
+    <>
+      {/* OVERLAY MOBILE */}
+      {menuAberto && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/60 z-40"
+          onClick={() => setMenuAberto(false)}
+        />
+      )}
 
-    <aside className="hidden md:flex w-[270px] bg-gradient-to-b from-[#020817] via-[#081120] to-[#020817] text-white min-h-screen border-r border-green-500/10 shadow-[0_0_25px_rgba(0,0,0,0.35)] flex-col justify-between overflow-hidden">
+      <aside className={`${menuAberto ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:relative z-50 transition-transform duration-300 flex w-[270px] bg-gradient-to-b from-[#020817] via-[#081120] to-[#020817] text-white h-screen border-r border-green-500/10 shadow-[0_0_25px_rgba(0,0,0,0.35)] flex-col justify-between overflow-hidden`}>
 
-      {/* TOPO */}
-      <div>
+        {/* TOPO */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin">
 
-        {/* LOGO */}
-        <div className="relative overflow-hidden border-b border-green-500/10">
+          {/* LOGO */}
+          <div className="relative border-b border-green-500/10 flex justify-between items-center pr-4">
 
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_60%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_60%)] pointer-events-none" />
+
+            <button 
+              className="md:hidden text-zinc-400 p-2 hover:bg-white/10 rounded-lg absolute right-2 top-4 z-50"
+              onClick={() => setMenuAberto(false)}
+            >
+              <X size={20} />
+            </button>
 
           <div className="p-6 relative z-10">
 
@@ -456,6 +472,7 @@ export default function Sidebar() {
       </div>
 
     </aside>
+    </>
 
   )
 

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   BrowserRouter,
   Routes,
@@ -7,7 +8,6 @@ import {
 } from 'react-router-dom'
 
 import Sidebar from './components/Sidebar'
-import BottomNav from './components/BottomNav'
 
 import Dashboard from './pages/Dashboard'
 import Investimentos from './pages/Investimentos'
@@ -41,6 +41,7 @@ function RotaPrivada({ children }) {
 function Layout() {
 
   const location = useLocation()
+  const [menuAberto, setMenuAberto] = useState(false)
 
   const telaLogin =
     location.pathname === '/login'
@@ -49,12 +50,11 @@ function Layout() {
 
     <div className="min-h-screen bg-[#f1f1f1] text-zinc-700 flex">
 
-      {!telaLogin && <Sidebar />}
-      {!telaLogin && <BottomNav />}
+      {!telaLogin && <Sidebar menuAberto={menuAberto} setMenuAberto={setMenuAberto} />}
 
-      <main className="flex-1 flex flex-col pb-[70px] md:pb-0 w-full overflow-hidden">
+      <main className="flex-1 flex flex-col w-full overflow-hidden">
 
-  {!telaLogin && <Topbar />}
+  {!telaLogin && <Topbar setMenuAberto={setMenuAberto} />}
 
   <div className="p-5 overflow-auto flex-1">
 

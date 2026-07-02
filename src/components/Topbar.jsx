@@ -2,25 +2,37 @@ import {
   Bell,
   Search,
   User,
-  ChevronDown
+  ChevronDown,
+  Menu
 } from 'lucide-react'
 
-export default function Topbar() {
+export default function Topbar({ setMenuAberto }) {
 
   return (
 
-    <div className="h-20 bg-[#071120]/95 backdrop-blur-md border-b border-green-500/10 flex items-center justify-between px-8 shadow-[0_2px_15px_rgba(0,0,0,0.08)]">
+    <div className="h-20 bg-[#071120]/95 backdrop-blur-md border-b border-green-500/10 flex items-center justify-between px-4 md:px-8 shadow-[0_2px_15px_rgba(0,0,0,0.08)]">
 
       {/* ESQUERDA */}
-      <div>
+      <div className="flex items-center gap-3">
+        <button 
+          onClick={() => setMenuAberto(true)}
+          className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+        >
+          <Menu size={24} />
+        </button>
 
-        <h1 className="text-2xl font-bold text-white tracking-tight">
-          Autoescola Online
-        </h1>
+        <div>
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight hidden sm:block">
+            Autoescola Online
+          </h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight sm:hidden">
+            Autoescola
+          </h1>
 
-        <p className="text-zinc-400 text-sm mt-1">
-          Sistema Administrativo
-        </p>
+          <p className="text-zinc-400 text-xs md:text-sm mt-1 hidden sm:block">
+            Sistema Administrativo
+          </p>
+        </div>
 
       </div>
 
@@ -28,7 +40,7 @@ export default function Topbar() {
       <div className="flex items-center gap-4">
 
         {/* BUSCA */}
-        <div className="w-[320px] h-12 rounded-xl bg-[#0b1730] border border-white/5 flex items-center px-4 gap-3 transition-all focus-within:border-green-500/40 focus-within:shadow-[0_0_15px_rgba(0,255,80,0.15)]">
+        <div className="hidden md:flex w-[320px] h-12 rounded-xl bg-[#0b1730] border border-white/5 items-center px-4 gap-3 transition-all focus-within:border-green-500/40 focus-within:shadow-[0_0_15px_rgba(0,255,80,0.15)]">
 
           <Search
             className="text-zinc-400"
