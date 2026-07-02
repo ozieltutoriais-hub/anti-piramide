@@ -79,7 +79,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
             <h1 className="text-[34px] font-bold tracking-tight leading-none">
 
               <span className="text-white">
-                AUTOESCOLA
+               C.I.A.T
               </span>
 
             </h1>
