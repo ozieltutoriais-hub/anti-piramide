@@ -91,20 +91,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
         </div>
 
-        {/* BANNER */}
-        <div className="px-4 pt-4">
 
-          <div className="rounded-2xl overflow-hidden border border-green-500/10 shadow-[0_0_20px_rgba(0,255,80,0.12)]">
-
-            <img
-              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
-              alt="banner"
-              className="w-full h-36 object-cover"
-            />
-
-          </div>
-
-        </div>
 
         {/* PERFIL */}
         <div className="p-4">
