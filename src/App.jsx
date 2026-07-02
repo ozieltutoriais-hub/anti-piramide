@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import Sidebar from './components/Sidebar'
+import BottomNav from './components/BottomNav'
 
 import Dashboard from './pages/Dashboard'
 import Investimentos from './pages/Investimentos'
@@ -49,8 +50,9 @@ function Layout() {
     <div className="min-h-screen bg-[#f1f1f1] text-zinc-700 flex">
 
       {!telaLogin && <Sidebar />}
+      {!telaLogin && <BottomNav />}
 
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col pb-[70px] md:pb-0 w-full overflow-hidden">
 
   {!telaLogin && <Topbar />}
 

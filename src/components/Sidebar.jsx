@@ -48,7 +48,7 @@ export default function Sidebar() {
 
   return (
 
-    <aside className="w-[270px] bg-gradient-to-b from-[#020817] via-[#081120] to-[#020817] text-white min-h-screen border-r border-green-500/10 shadow-[0_0_25px_rgba(0,0,0,0.35)] flex flex-col justify-between overflow-hidden">
+    <aside className="hidden md:flex w-[270px] bg-gradient-to-b from-[#020817] via-[#081120] to-[#020817] text-white min-h-screen border-r border-green-500/10 shadow-[0_0_25px_rgba(0,0,0,0.35)] flex-col justify-between overflow-hidden">
 
       {/* TOPO */}
       <div>
