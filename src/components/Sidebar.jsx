@@ -1,4 +1,5 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import bannerImg from '../img/banner.png'
 
 import {
   Home,
@@ -74,21 +75,15 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
               <X size={20} />
             </button>
 
-          <div className="p-6 relative z-10">
+          <div className="p-6 relative z-10 flex flex-col items-center">
 
-            <h1 className="text-[34px] font-bold tracking-tight leading-none">
+            <img 
+              src={bannerImg} 
+              alt="Logo C.I.A.T" 
+              className="w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(0,255,102,0.3)]"
+            />
 
-              <span className="text-white">
-               C.I.A.T
-              </span>
-
-            </h1>
-
-            <h2 className="text-[28px] font-bold text-[#00ff66] leading-none mt-1">
-              ONLINE
-            </h2>
-
-            <p className="text-zinc-400 mt-4 text-sm">
+            <p className="text-zinc-400 mt-4 text-sm text-center">
               Sistema Administrativo
             </p>
 
@@ -170,7 +165,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
             <div className="space-y-2">
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/')
@@ -188,7 +183,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/cadastro"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/cadastro')
@@ -206,7 +201,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/cadastro-profissional"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/cadastro-profissional')
@@ -224,7 +219,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/agenda"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/agenda')
@@ -242,7 +237,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/veiculos"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/veiculos')
@@ -260,7 +255,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/processos"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/processos')
@@ -278,7 +273,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/integracao-detran"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/integracao-detran')
@@ -290,7 +285,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
                 Integração DETRAN
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/financeiro"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/financeiro')
@@ -302,7 +297,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
                 Financeiro
               </Link>
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/instrutores"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/instrutores')
@@ -327,7 +322,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
             <div className="space-y-2">
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/investimentos"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/investimentos')
@@ -380,7 +375,7 @@ export default function Sidebar({ menuAberto, setMenuAberto }) {
 
             <div className="space-y-2">
 
-              <Link
+              <Link onClick={() => setMenuAberto(false)}
                 to="/relatorios"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
                   ativo('/relatorios')
