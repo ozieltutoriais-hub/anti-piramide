@@ -51,9 +51,20 @@ navigate('/')
 
     } catch (error) {
 
-  alert(error.message)
+      let mensagem = 'Erro ao tentar entrar no sistema.'
+      
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+        mensagem = 'Senha incorreta! Tente novamente.'
+      } else if (error.code === 'auth/user-not-found') {
+        mensagem = 'Nenhum usuário cadastrado com este email.'
+      } else if (error.code === 'auth/invalid-email') {
+        mensagem = 'Formato de email inválido.'
+      } else if (error.code === 'auth/too-many-requests') {
+        mensagem = 'Muitas tentativas falhas. Tente novamente mais tarde.'
+      }
 
-      console.log(error)
+      alert(mensagem)
+      console.log(error.code, error.message)
 
     }
 
@@ -67,17 +78,17 @@ navigate('/')
 
         <div className="text-center mb-10">
 
-          <div className="w-28 h-28 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mx-auto mb-6 flex items-center justify-center">
+          <div className="w-28 h-28 rounded-full bg-gradient-to-br from-green-500 to-green-600 mx-auto mb-6 flex items-center justify-center shadow-[0_0_30px_rgba(34,197,94,0.3)]">
 
             <ShieldCheck
               size={50}
-              className="text-black"
+              className="text-white"
             />
 
           </div>
 
-          <h1 className="text-5xl font-black text-yellow-400 mb-3">
-            LOGIN FIREBASE
+          <h1 className="text-5xl font-black text-white mb-3">
+            LOGIN <span className="text-green-500">SISTEMA</span>
           </h1>
 
         </div>
@@ -121,7 +132,7 @@ navigate('/')
           <button
             type="button"
             onClick={entrar}
-            className="w-full bg-yellow-500 hover:bg-yellow-600 text-black transition p-5 rounded-2xl font-black text-lg shadow-2xl"
+            className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white transition-all duration-300 p-5 rounded-2xl font-black text-lg shadow-lg"
           >
             Entrar no Sistema
           </button>

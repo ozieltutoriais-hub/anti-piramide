@@ -7,7 +7,7 @@ import {
   ResponsiveContainer
 } from 'recharts'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import {
   Bell,
@@ -15,6 +15,11 @@ import {
 } from 'lucide-react'
 
 import StatsCard from '../components/StatsCard'
+
+import app from '../firebase/firebase'
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
+
+const db = getFirestore(app)
 
 const data = [
   { name: 'Seg', matriculas: 4 },
@@ -29,11 +34,23 @@ const data = [
 export default function Dashboard() {
 
   const usuario = JSON.parse(
-    localStorage.getItem('venaUser')
+    localStorage.getItem('usuarioLogado')
   )
 
-  const [alunosOnline] = useState(248)
+  const [alunosOnline, setAlunosOnline] = useState(0)
   const [veiculos] = useState(14)
+
+  useEffect(() => {
+    async function carregarAlunos() {
+      try {
+        const snapshot = await getDocs(collection(db, 'alunos'))
+        setAlunosOnline(snapshot.size)
+      } catch (e) {
+        console.error("Erro ao buscar alunos", e)
+      }
+    }
+    carregarAlunos()
+  }, [])
 
   return (
 
@@ -45,8 +62,8 @@ export default function Dashboard() {
 
           <div>
 
-            <h1 className="text-5xl font-black mb-3 text-yellow-400">
-              Auto Escola Online
+            <h1 className="text-5xl font-black mb-3 text-white">
+              Auto Escola <span className="text-green-500">Online</span>
             </h1>
 
             <p className="text-zinc-400 text-lg">
@@ -71,7 +88,7 @@ export default function Dashboard() {
 
             <div className="flex items-center gap-3 bg-[#11192c] px-5 py-3 rounded-2xl">
 
-              <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-black font-black text-xl">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-b from-green-500 to-green-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                 J
               </div>
 
@@ -101,7 +118,7 @@ export default function Dashboard() {
           Usuário Logado
         </p>
 
-        <h2 className="text-3xl font-black text-yellow-400">
+        <h2 className="text-3xl font-black text-green-500">
           {usuario?.nome}
         </h2>
 
@@ -116,31 +133,31 @@ export default function Dashboard() {
         <StatsCard
           title="Alunos Ativos"
           value={alunosOnline}
-          color="bg-gradient-to-br from-blue-500 to-cyan-700"
+          colorClass="bg-green-500"
         />
 
         <StatsCard
           title="Aulas Hoje"
           value="18"
-          color="bg-gradient-to-br from-green-500 to-green-700"
+          colorClass="bg-blue-500"
         />
 
         <StatsCard
           title="Exames Marcados"
           value="12"
-          color="bg-gradient-to-br from-yellow-400 to-orange-500"
+          colorClass="bg-purple-500"
         />
 
         <StatsCard
           title="Veículos"
           value={veiculos}
-          color="bg-gradient-to-br from-cyan-500 to-blue-700"
+          colorClass="bg-teal-400"
         />
 
         <StatsCard
           title="Instrutores"
           value="6"
-          color="bg-gradient-to-br from-purple-500 to-pink-600"
+          colorClass="bg-sky-400"
         />
 
       </div>
@@ -182,7 +199,7 @@ export default function Dashboard() {
               <Line
                 type="monotone"
                 dataKey="matriculas"
-                stroke="#eab308"
+                stroke="#22c55e"
                 strokeWidth={4}
               />
 
@@ -200,8 +217,8 @@ export default function Dashboard() {
 
           <div>
 
-            <h2 className="text-4xl font-black mb-2 text-yellow-400">
-              Central Administrativa
+            <h2 className="text-4xl font-black mb-2 text-white">
+              Central <span className="text-green-500">Administrativa</span>
             </h2>
 
             <p className="text-zinc-400">
@@ -211,7 +228,7 @@ export default function Dashboard() {
           </div>
 
           <button
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-2xl font-bold text-lg transition"
+            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
           >
             Nova Matrícula
           </button>
@@ -250,7 +267,7 @@ export default function Dashboard() {
               Veículos Disponíveis
             </p>
 
-            <h3 className="text-3xl font-black text-yellow-400">
+            <h3 className="text-3xl font-black text-green-400">
               {veiculos}
             </h3>
 

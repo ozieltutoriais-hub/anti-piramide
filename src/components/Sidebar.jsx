@@ -12,9 +12,13 @@ import {
   ShieldCheck,
   User,
   BarChart3,
-  Wallet,
   CreditCard,
-  ClipboardList
+  ClipboardList,
+  Car,
+  Wallet,
+  Kanban,
+  Server,
+  Banknote
 } from 'lucide-react'
 
 export default function Sidebar() {
@@ -169,9 +173,9 @@ export default function Sidebar() {
               </Link>
 
               <Link
-                to="/cadastro-profissional"
+                to="/cadastro"
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
-                  ativo('/cadastro-profissional')
+                  ativo('/cadastro')
                     ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
                     : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
                 }`}
@@ -182,11 +186,18 @@ export default function Sidebar() {
                   strokeWidth={2.2}
                 />
 
-                Condutores
+                Cadastro de Alunos
 
               </Link>
 
-              <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#0b1730] hover:bg-[#12203d] text-zinc-300 transition-all duration-300 font-semibold">
+              <Link
+                to="/cadastro-profissional"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/cadastro-profissional')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
 
                 <GraduationCap
                   size={18}
@@ -195,9 +206,16 @@ export default function Sidebar() {
 
                 Instrutores
 
-              </button>
+              </Link>
 
-              <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#0b1730] hover:bg-[#12203d] text-zinc-300 transition-all duration-300 font-semibold">
+              <Link
+                to="/agenda"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/agenda')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
 
                 <Calendar
                   size={18}
@@ -206,7 +224,79 @@ export default function Sidebar() {
 
                 Aulas
 
-              </button>
+              </Link>
+
+              <Link
+                to="/veiculos"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/veiculos')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
+
+                <Car
+                  size={18}
+                  strokeWidth={2.2}
+                />
+
+                Frota (Veículos)
+
+              </Link>
+
+              <Link
+                to="/processos"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/processos')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
+
+                <Kanban
+                  size={18}
+                  strokeWidth={2.2}
+                />
+
+                Processos (Kanban)
+
+              </Link>
+
+              <Link
+                to="/integracao-detran"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/integracao-detran')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
+                <Server size={18} strokeWidth={2.2} />
+                Integração DETRAN
+              </Link>
+
+              <Link
+                to="/financeiro"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/financeiro')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
+                <Banknote size={18} strokeWidth={2.2} />
+                Financeiro
+              </Link>
+
+              <Link
+                to="/instrutores"
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 font-semibold ${
+                  ativo('/instrutores')
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-[0_0_30px_rgba(0,255,80,0.25)]'
+                    : 'bg-[#0b1730] hover:bg-[#12203d] text-zinc-300'
+                }`}
+              >
+                <Users size={18} strokeWidth={2.2} />
+                Instrutores
+              </Link>
 
             </div>
 

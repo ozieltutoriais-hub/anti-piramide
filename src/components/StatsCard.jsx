@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export default function StatsCard({
   title,
   value,
-  color
+  colorClass
 }) {
   return (
     <motion.div
@@ -11,16 +11,16 @@ export default function StatsCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       whileHover={{
-        scale: 1.03
+        scale: 1.02
       }}
-      className={`rounded-3xl p-7 shadow-2xl ${color}`}
+      className="rounded-3xl p-7 bg-[#11192c] border border-zinc-800 shadow-xl relative overflow-hidden"
     >
-
-      <p className="text-white/80 mb-3">
+      <div className={`absolute top-0 left-0 w-full h-1 ${colorClass}`}></div>
+      <p className="text-zinc-400 mb-3 font-medium">
         {title}
       </p>
 
-      <h3 className="text-4xl font-black">
+      <h3 className="text-4xl font-black text-white">
         {value}
       </h3>
 

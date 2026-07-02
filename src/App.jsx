@@ -13,6 +13,14 @@ import Investimentos from './pages/Investimentos'
 import Relatorios from './pages/Relatorios'
 import Cadastro from './pages/Cadastro'
 import CadastroProfissional from './pages/CadastroProfissional'
+import Agenda from './pages/Agenda'
+import Veiculos from './pages/Veiculos'
+import Processos from './pages/Processos'
+import IntegracaoDetran from './pages/IntegracaoDetran'
+import Financeiro from './pages/Financeiro'
+import FinanceiroAluno from './pages/FinanceiroAluno'
+import Pacotes from './pages/Pacotes'
+import Instrutores from './pages/Instrutores'
 import Topbar from './components/Topbar'
 import Login from './pages/Login'
 
@@ -96,6 +104,78 @@ function Layout() {
         element={
           <RotaPrivada>
             <CadastroProfissional />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/agenda"
+        element={
+          <RotaPrivada>
+            <Agenda />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/veiculos"
+        element={
+          <RotaPrivada>
+            <Veiculos />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/processos"
+        element={
+          <RotaPrivada>
+            <Processos />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/integracao-detran"
+        element={
+          <RotaPrivada>
+            <IntegracaoDetran />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/financeiro"
+        element={
+          <RotaPrivada>
+            <Financeiro />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/financeiro-aluno"
+        element={
+          <RotaPrivada>
+            <FinanceiroAluno />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/pacotes"
+        element={
+          <RotaPrivada>
+            <Pacotes />
+          </RotaPrivada>
+        }
+      />
+
+      <Route
+        path="/instrutores"
+        element={
+          <RotaPrivada>
+            <Instrutores />
           </RotaPrivada>
         }
       />

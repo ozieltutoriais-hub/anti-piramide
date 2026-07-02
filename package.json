@@ -10,7 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.21",
+    "@fullcalendar/interaction": "^6.1.21",
+    "@fullcalendar/react": "^6.1.21",
+    "@fullcalendar/timegrid": "^6.1.21",
     "@tailwindcss/postcss": "^4.3.0",
+    "axios": "^1.18.1",
     "firebase": "^12.13.0",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.16.0",

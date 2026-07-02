@@ -7,24 +7,31 @@ import {
   CheckCircle2
 } from 'lucide-react'
 
+import app from '../firebase/firebase'
+import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore'
+
+const db = getFirestore(app)
+
 export default function Investimentos() {
 
   const [mensalidades, setMensalidades] = useState([])
 
   useEffect(() => {
 
-    const dados = JSON.parse(
-      localStorage.getItem('financeiroAutoEscola')
-    ) || []
+    async function carregarMensalidades() {
+      const snapshot = await getDocs(collection(db, 'mensalidades'))
+      const lista = []
+      snapshot.forEach(doc => lista.push({ id: doc.id, ...doc.data() }))
+      setMensalidades(lista)
+    }
 
-    setMensalidades(dados)
+    carregarMensalidades()
 
   }, [])
 
-  function adicionarMensalidade() {
+  async function adicionarMensalidade() {
 
     const novaMensalidade = {
-      id: Date.now(),
       aluno: 'Aluno ' + (mensalidades.length + 1),
       valor: 850,
       vencimento: '10/06/2026',
@@ -33,17 +40,15 @@ export default function Investimentos() {
         : 'Pendente'
     }
 
-    const novaLista = [
-      ...mensalidades,
-      novaMensalidade
-    ]
-
-    setMensalidades(novaLista)
-
-    localStorage.setItem(
-      'financeiroAutoEscola',
-      JSON.stringify(novaLista)
-    )
+    try {
+      const docRef = await addDoc(collection(db, 'mensalidades'), novaMensalidade)
+      setMensalidades([
+        ...mensalidades,
+        { id: docRef.id, ...novaMensalidade }
+      ])
+    } catch (e) {
+      console.error(e)
+    }
 
   }
 
@@ -65,7 +70,7 @@ export default function Investimentos() {
 
           <div>
 
-            <h1 className="text-5xl font-black text-yellow-400">
+            <h1 className="text-5xl font-black text-green-500">
               Financeiro
             </h1>
 
@@ -77,7 +82,7 @@ export default function Investimentos() {
 
           <button
             onClick={adicionarMensalidade}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-2xl font-black text-lg transition"
+            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
           >
             Nova Mensalidade
           </button>
@@ -130,11 +135,11 @@ export default function Investimentos() {
                 Total
               </h2>
 
-              <DollarSign className="text-yellow-400" size={35} />
+              <DollarSign className="text-green-500" size={35} />
 
             </div>
 
-            <h3 className="text-5xl font-black text-yellow-400">
+            <h3 className="text-5xl font-black text-green-500">
               R$ {totalRecebido + totalPendente}
             </h3>
 
@@ -205,7 +210,7 @@ export default function Investimentos() {
                       {item.aluno}
                     </td>
 
-                    <td className="p-5 text-yellow-400 font-bold">
+                    <td className="p-5 text-green-500 font-bold">
                       R$ {item.valor}
                     </td>
 

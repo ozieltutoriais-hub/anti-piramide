@@ -9,6 +9,11 @@ import {
   X
 } from 'lucide-react'
 
+import app from '../firebase/firebase'
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore'
+
+const db = getFirestore(app)
+
 export default function Relatorios() {
 
   const [alunos, setAlunos] = useState([])
@@ -23,16 +28,21 @@ export default function Relatorios() {
   const [status, setStatus] = useState('Ativo')
 
   useEffect(() => {
-
-    const dados = JSON.parse(
-      localStorage.getItem('alunosAutoEscola')
-    ) || []
-
-    setAlunos(dados)
-
+    carregarAlunos()
   }, [])
 
-  function excluirAluno(id) {
+  async function carregarAlunos() {
+    try {
+      const snapshot = await getDocs(collection(db, 'alunos'))
+      const lista = []
+      snapshot.forEach(d => lista.push({ id: d.id, ...d.data() }))
+      setAlunos(lista)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async function excluirAluno(id) {
 
     const confirmar = confirm(
       'Deseja excluir este aluno?'
@@ -40,16 +50,12 @@ export default function Relatorios() {
 
     if (!confirmar) return
 
-    const novaLista = alunos.filter(
-      (aluno) => aluno.id !== id
-    )
-
-    setAlunos(novaLista)
-
-    localStorage.setItem(
-      'alunosAutoEscola',
-      JSON.stringify(novaLista)
-    )
+    try {
+      await deleteDoc(doc(db, 'alunos', id))
+      carregarAlunos()
+    } catch(e) {
+      console.error(e)
+    }
 
   }
 
@@ -65,37 +71,21 @@ export default function Relatorios() {
 
   }
 
-  function salvarEdicao() {
-
-    const novaLista = alunos.map((aluno) => {
-
-      if (aluno.id === editando.id) {
-
-        return {
-          ...aluno,
-          nome,
-          email,
-          telefone,
-          cidade,
-          status
-        }
-
-      }
-
-      return aluno
-    })
-
-    setAlunos(novaLista)
-
-    localStorage.setItem(
-      'alunosAutoEscola',
-      JSON.stringify(novaLista)
-    )
-
-    setEditando(null)
-
-    alert('Aluno atualizado com sucesso!')
-
+  async function salvarEdicao() {
+    try {
+      await updateDoc(doc(db, 'alunos', editando.id), {
+        nome,
+        email,
+        telefone,
+        cidade,
+        status
+      })
+      carregarAlunos()
+      setEditando(null)
+      alert('Aluno atualizado com sucesso!')
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   const alunosFiltrados = alunos.filter(
@@ -115,7 +105,7 @@ export default function Relatorios() {
 
           <div>
 
-            <h1 className="text-5xl font-black text-yellow-400">
+            <h1 className="text-5xl font-black text-green-500">
               Painel Administrativo
             </h1>
 
@@ -127,7 +117,7 @@ export default function Relatorios() {
 
           <div className="bg-[#11192c] px-6 py-4 rounded-3xl border border-zinc-800 flex items-center gap-4">
 
-            <Users size={26} className="text-yellow-400" />
+            <Users size={26} className="text-green-500" />
 
             <div>
 
@@ -246,7 +236,7 @@ export default function Relatorios() {
 
                         <button
                           onClick={() => abrirEdicao(aluno)}
-                          className="bg-yellow-500 hover:bg-yellow-600 text-black transition p-3 rounded-2xl"
+                          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white transition-all duration-300 p-3 rounded-2xl shadow-lg"
                         >
 
                           <Pencil size={20} />
@@ -295,7 +285,7 @@ export default function Relatorios() {
 
             </button>
 
-            <h2 className="text-4xl font-black text-yellow-400 mb-8">
+            <h2 className="text-4xl font-black text-green-500 mb-8">
               Editar Aluno
             </h2>
 
@@ -351,7 +341,7 @@ export default function Relatorios() {
 
               <button
                 onClick={salvarEdicao}
-                className="w-full bg-yellow-500 hover:bg-yellow-600 text-black transition p-5 rounded-2xl font-black text-lg"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white transition-all duration-300 p-5 rounded-2xl font-black text-lg shadow-lg"
               >
                 Salvar Alterações
               </button>
