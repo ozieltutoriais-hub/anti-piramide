@@ -21,15 +21,15 @@ export default function Topbar({ setMenuAberto }) {
           <Menu size={24} />
         </button>
 
-        <div>
-          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight hidden sm:block">
+        <div className="flex flex-col justify-center">
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight hidden sm:block whitespace-nowrap">
             Autoescola Online
           </h1>
-          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight sm:hidden">
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-tight sm:hidden whitespace-nowrap">
             Autoescola
           </h1>
 
-          <p className="text-zinc-400 text-xs md:text-sm mt-1 hidden sm:block">
+          <p className="text-zinc-400 text-xs md:text-sm hidden sm:block whitespace-nowrap">
             Sistema Administrativo
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function Topbar({ setMenuAberto }) {
       <div className="flex items-center gap-4">
 
         {/* BUSCA */}
-        <div className="hidden md:flex w-[320px] h-12 rounded-xl bg-[#0b1730] border border-white/5 items-center px-4 gap-3 transition-all focus-within:border-green-500/40 focus-within:shadow-[0_0_15px_rgba(0,255,80,0.15)]">
+        <div className="hidden lg:flex w-[220px] xl:w-[320px] h-12 rounded-xl bg-[#0b1730] border border-white/5 items-center px-4 gap-3 transition-all focus-within:border-green-500/40 focus-within:shadow-[0_0_15px_rgba(0,255,80,0.15)]">
 
           <Search
             className="text-zinc-400"
