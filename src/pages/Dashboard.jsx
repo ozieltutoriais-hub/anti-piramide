@@ -10,9 +10,9 @@ import {
 import { useState, useEffect } from 'react'
 
 import {
-  Bell,
-  Search
+  LayoutDashboard
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 import StatsCard from '../components/StatsCard'
 
@@ -54,86 +54,31 @@ export default function Dashboard() {
 
   return (
 
-    <div>
+    <div className="min-h-full bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] -m-5 p-4 lg:p-8">
 
-      <div className="mb-10">
-
-        <div className="flex items-center justify-between mb-8">
-
+      {/* HEADER BAR */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white rounded-2xl border border-zinc-200 p-5 mb-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <LayoutDashboard size={24} className="text-white" strokeWidth={2.5} />
+          </div>
           <div>
-
-            <h1 className="text-5xl font-black mb-3 text-white">
-              Auto Escola <span className="text-green-500">Online</span>
-            </h1>
-
-            <p className="text-zinc-400 text-lg">
-              Plataforma educacional e gerenciamento de alunos
-            </p>
-
+            <h1 className="text-2xl font-bold text-slate-800">Painel Principal</h1>
+            <p className="text-sm text-slate-500">Visão geral do sistema e indicadores</p>
           </div>
-
-          <div className="flex items-center gap-4">
-
-            <div className="bg-[#11192c] p-4 rounded-2xl cursor-pointer hover:bg-[#18233b] transition">
-              <Search size={22} />
-            </div>
-
-            <div className="bg-[#11192c] p-4 rounded-2xl cursor-pointer hover:bg-[#18233b] transition relative">
-
-              <Bell size={22} />
-
-              <div className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full"></div>
-
-            </div>
-
-            <div className="flex items-center gap-3 bg-[#11192c] px-5 py-3 rounded-2xl">
-
-              <div className="w-12 h-12 rounded-full bg-gradient-to-b from-green-500 to-green-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
-                J
-              </div>
-
-              <div>
-
-                <p className="font-bold">
-                  {usuario?.nome || 'Administrador'}
-                </p>
-
-                <p className="text-zinc-400 text-sm">
-                  Administrador
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
         </div>
+      </motion.div>
 
-      </div>
-
-      <div className="mt-4 bg-[#11192c] border border-zinc-800 rounded-3xl p-6 mb-10">
-
-        <p className="text-zinc-400 mb-2">
-          Usuário Logado
-        </p>
-
-        <h2 className="text-3xl font-black text-green-500">
-          {usuario?.nome}
-        </h2>
-
-        <p className="text-zinc-500 mt-2">
-          {usuario?.email}
-        </p>
-
-      </div>
-
-      <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-6">
+      <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-6 mb-8">
 
         <StatsCard
           title="Alunos Ativos"
           value={alunosOnline}
-          colorClass="bg-green-500"
+          colorClass="bg-emerald-500"
         />
 
         <StatsCard
@@ -162,23 +107,23 @@ export default function Dashboard() {
 
       </div>
 
-      <div className="bg-[#11192c] rounded-3xl p-8 border border-zinc-800 mt-10">
+      <div className="bg-white rounded-2xl p-6 border border-zinc-200 shadow-sm">
 
         <div className="flex items-center justify-between mb-8">
 
           <div>
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-2xl font-bold text-slate-800">
               Matrículas da Semana
             </h2>
 
-            <p className="text-zinc-500 mt-2">
+            <p className="text-zinc-500 mt-1 text-sm">
               Evolução semanal das matrículas
             </p>
 
           </div>
 
-          <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-2xl font-bold">
+          <div className="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl font-bold text-sm border border-emerald-100">
             + 28%
           </div>
 
@@ -190,17 +135,21 @@ export default function Dashboard() {
 
             <LineChart data={data}>
 
-              <XAxis dataKey="name" />
+              <XAxis dataKey="name" stroke="#94a3b8" />
 
-              <YAxis />
+              <YAxis stroke="#94a3b8" />
 
-              <Tooltip />
+              <Tooltip 
+                contentStyle={{ backgroundColor: '#fff', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+              />
 
               <Line
                 type="monotone"
                 dataKey="matriculas"
-                stroke="#22c55e"
+                stroke="#10b981"
                 strokeWidth={4}
+                dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, strokeWidth: 0 }}
               />
 
             </LineChart>
@@ -211,63 +160,63 @@ export default function Dashboard() {
 
       </div>
 
-      <div className="mt-10 bg-[#11192c] rounded-3xl p-8 border border-zinc-800">
+      <div className="mt-8 bg-white rounded-2xl p-6 border border-zinc-200 shadow-sm">
 
-        <div className="flex items-center justify-between flex-wrap gap-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
 
           <div>
 
-            <h2 className="text-4xl font-black mb-2 text-white">
-              Central <span className="text-green-500">Administrativa</span>
+            <h2 className="text-2xl font-bold text-slate-800">
+              Central Operacional
             </h2>
 
-            <p className="text-zinc-400">
-              Controle educacional e operacional da auto escola
+            <p className="text-zinc-500 mt-1 text-sm">
+              Visão geral de aprovações e frota
             </p>
 
           </div>
 
           <button
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
+            className="bg-slate-800 hover:bg-slate-700 text-white shadow-sm px-6 py-3 rounded-xl font-medium text-sm transition-all"
           >
             Nova Matrícula
           </button>
 
         </div>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
 
-          <div className="bg-[#18233b] rounded-2xl p-6">
+          <div className="bg-slate-50 border border-zinc-100 rounded-2xl p-6">
 
-            <p className="text-zinc-400 mb-2">
+            <p className="text-zinc-500 mb-2 font-medium text-sm">
               Aprovação
             </p>
 
-            <h3 className="text-3xl font-black text-green-400">
+            <h3 className="text-3xl font-bold text-emerald-600">
               92%
             </h3>
 
           </div>
 
-          <div className="bg-[#18233b] rounded-2xl p-6">
+          <div className="bg-slate-50 border border-zinc-100 rounded-2xl p-6">
 
-            <p className="text-zinc-400 mb-2">
+            <p className="text-zinc-500 mb-2 font-medium text-sm">
               CNHs Emitidas
             </p>
 
-            <h3 className="text-3xl font-black text-blue-400">
+            <h3 className="text-3xl font-bold text-blue-600">
               1.284
             </h3>
 
           </div>
 
-          <div className="bg-[#18233b] rounded-2xl p-6">
+          <div className="bg-slate-50 border border-zinc-100 rounded-2xl p-6">
 
-            <p className="text-zinc-400 mb-2">
+            <p className="text-zinc-500 mb-2 font-medium text-sm">
               Veículos Disponíveis
             </p>
 
-            <h3 className="text-3xl font-black text-green-400">
+            <h3 className="text-3xl font-bold text-emerald-600">
               {veiculos}
             </h3>
 
